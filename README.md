@@ -1,11 +1,6 @@
-# GameLauncher_NFSW [![Build Status](https://travis-ci.org/SoapboxRaceWorld/GameLauncher_NFSW.svg?branch=master)](https://travis-ci.org/SoapboxRaceWorld/GameLauncher_NFSW)
-A Rewrite of GameLauncher taken from Need For Speed: World
+# GameLauncher_NFSW 
+![GitHub All Releases](https://img.shields.io/github/downloads/SoapboxRaceWorld/GameLauncher_NFSW/total) 
 
-## Todo
-- [X] Downloader?
-- [ ] Validate files (sha1?)
-- [X] Complete UI
-- [X] Original fonts
+A community-developed and open-source launcher for Need for Speed: World.
 
-### Screenshot
-![](screenshot.png)
+<!--TODO: List all nextgen changes. -->
