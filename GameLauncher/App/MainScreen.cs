@@ -1937,6 +1937,18 @@ namespace GameLauncher {
                 return;
             }
 
+            String[] newFiles = new string[] { "7z", "PocoFoundation", "PocoNet", "dinput8" };
+            foreach (string file in newFiles) {
+                if(File.Exists(file + ".dll")) { 
+                    try {
+                        File.Delete(file + ".dll");
+                    } catch {
+                        MessageBox.Show($"File {file} cannot be deleted.", "ModLoader", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+
+
             if (!File.Exists(Path.Combine(_settingFile.Read("InstallationDirectory"), "lightfx.dll"))) {
                 try {
                     WebClientWithTimeout lightfx = new WebClientWithTimeout();
@@ -1953,8 +1965,6 @@ namespace GameLauncher {
 
             if (jsonModNet != String.Empty) {
                 playProgressText.Text = "ModNetReloaded support detected, downloading required files...".ToUpper();
-
-                String[] newFiles = new string[] { "7z", "PocoFoundation", "PocoNet", "dinput8" };
 
                 try {
                     try { 
