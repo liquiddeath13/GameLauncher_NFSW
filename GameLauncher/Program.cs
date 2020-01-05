@@ -25,7 +25,7 @@ namespace GameLauncher {
         {
             Console.WriteLine("Application path: " + Path.GetDirectoryName(Application.ExecutablePath));
 
-            GPU getinfo = null;
+            /*GPU getinfo = null;
             
             switch(GPUHelper.getManufacturer()) {
                 case GPUHelper.GPUManufacturer.NVIDIA:
@@ -42,7 +42,7 @@ namespace GameLauncher {
                     break;
             }
             
-            //MessageBox.Show(getinfo.DriverVersion());
+            MessageBox.Show(getinfo.DriverVersion());*/
 
             if (!Self.hasWriteAccessToFolder(Path.GetDirectoryName(Application.ExecutablePath))) {
                 MessageBox.Show("This application requires admin priviledge. Restarting...");
