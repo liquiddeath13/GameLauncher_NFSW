@@ -1,9 +1,12 @@
 ﻿using GameLauncher.App.Classes;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -162,6 +165,31 @@ namespace GameLauncherReborn {
             int PE_HEADER_ADDR = BitConverter.ToInt32(data, PE_POINTER_OFFSET);
             int machineUint = BitConverter.ToUInt16(data, PE_HEADER_ADDR + MACHINE_OFFSET);
             return machineUint == 0x014c;
+        }
+
+        public static string StrFromSec(List<byte> sec)
+        {
+            while (sec.Count < 16 || sec.Count % 16 != 0)
+            {
+                sec.Add(Convert.ToByte(' '));
+            }
+            byte[] copy = sec.ToArray();
+            ProtectedMemory.Unprotect(copy, MemoryProtectionScope.SameProcess);
+            return Encoding.ASCII.GetString(copy).TrimEnd(' ');
+        }
+
+        public static List<byte> StrToBytes(string str)
+        {
+            byte[] l = Encoding.ASCII.GetBytes(str);
+            List<byte> b = new List<byte>();
+            b.AddRange(l);
+            while (b.Count < 16 || b.Count % 16 != 0)
+            {
+                b.Add(Convert.ToByte(' '));
+            }
+            l = b.ToArray();
+            ProtectedMemory.Protect(l, MemoryProtectionScope.SameProcess);
+            return l.ToList();
         }
     }
 }

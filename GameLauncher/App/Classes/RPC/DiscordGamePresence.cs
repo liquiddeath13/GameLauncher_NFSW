@@ -21,7 +21,7 @@ namespace GameLauncher.App.Classes.RPC {
         private static bool eventTerminatedManually = false;
         private static int EventID;
         private static string carslotsXML = String.Empty;
-
+        private static IntPtr _hookID = IntPtr.Zero;
         //Some data related, can be touched.
         public static string PersonaId = String.Empty;
         public static string PersonaName = String.Empty;
@@ -239,7 +239,7 @@ namespace GameLauncher.App.Classes.RPC {
                     SmallImageText = EventList.getEventName(EventID),
                     SmallImageKey = EventList.getEventType(EventID)
                 };
-
+                User32.UnhookWindowsHookEx(_hookID);
                 AntiCheat.disableChecks();
                 MainScreen.discordRpcClient.SetPresence(_presence);
 
@@ -257,6 +257,7 @@ namespace GameLauncher.App.Classes.RPC {
                 };
 
                 AntiCheat.event_id = EventID;
+                _hookID = AntiCheat.SetHook();
                 AntiCheat.enableChecks();
 
                 _presence.Timestamps = GetCurrentTimestamp();

@@ -97,7 +97,7 @@ namespace GameLauncher {
                 }
             }
 
-            HashChecker.CheckLauncher(Application.ExecutablePath);
+            //HashChecker.CheckLauncher(Application.ExecutablePath);
             //HashChecker.CheckLauncherFolder(Path.GetDirectoryName(Application.ExecutablePath));
 
             if (!File.Exists("servers.json")) {

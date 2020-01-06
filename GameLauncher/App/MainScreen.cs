@@ -1839,7 +1839,7 @@ namespace GameLauncher {
                             secondsToShutDownNamed = "Waiting for event to finish.";
                         }
 
-                        User32.SetWindowText((IntPtr)p, "[" + secondsToShutDownNamed + "] " + _realServername);
+                        //User32.SetWindowText((IntPtr)p, "[" + secondsToShutDownNamed + "] " + _realServername);
                     }
                 }
 
